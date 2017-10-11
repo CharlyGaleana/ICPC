@@ -12,7 +12,7 @@ ull hStr[28];
 
 int nxt[MAX_N + 2][28];
 
-const ull b = 29;
+const ull b = 37;
 
 ull myHash(int x){
     ull ret = 0;
@@ -61,25 +61,30 @@ int main() {
                     if(hStr[j] != hNum[ A[nxt[i][j] - i] ])
                         break;
           
-            if(j > 26)
+            if(j > 26){
                 ans++;
-            
+				cout << i << " ";
+			}
             //actualizar hashes
             int x = s[i] - 'a' + 1;
             for(j = 1; j <= 26; j++)
                 hStr[j] -= (x == j ? B : 0);
             
-            int x = s[i + n] - 'a' + 1;
+            x = s[i + n] - 'a' + 1;
             for(j = 1; j <= 26; j++)
                 hStr[j] = hStr[j] * b + (x == j ? b : 0);
         }
         
         for(j = 1; j <= 26; j++)
-            if(nxt[i][j] < n)
+            if(nxt[i][j] < s.size())
 				if(hStr[j] != hNum[ A[nxt[i][j] - i] ])
 					break;
-        if(j > 26)
+	
+        if(j > 26){
             ans++;
+			cout << i;
+		}
+		cout << "\n";
         
         cout << ans << "\n";
         

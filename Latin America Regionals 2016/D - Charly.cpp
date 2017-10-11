@@ -19,18 +19,18 @@ int main() {
         j = 0;
         for(i = 1; i < n; i += 2)
             ans[++j] = A[i];
-        if(j == n) j--;
-        else j -= 3;
+        if(i == n) i--;
+        else i -= 3;
         for(; i > 1; i -= 2)
             ans[++j] = A[i];
         
         long long area = 0;
         for(i = 0; i < n - 1; i++)
-            area += A[i] * A[i + 1];
-        area += A[0] * A[n - 1];
+            area += ans[i] * ans[i + 1];
+        area += ans[0] * ans[n - 1];
         
-        cout << fixed << setPrecision(3);
-        cout << (long double)(area / 2) * sin( (2 * M_PI) / n )<< "\n";
+        cout << fixed << setprecision(3);
+        cout << (long double)(area) / 2 * sin( (2 * M_PI) / n )<< "\n";
     }
     return 0;
 }
