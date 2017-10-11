@@ -40,7 +40,6 @@ int main() {
         }
         
         for(int i = 1; i <= n; i++) S.insert({degree[i], i});
-        int size = n;
         do {
             set < pii > :: iterator it;
             it = S.begin();
@@ -49,15 +48,14 @@ int main() {
             } else {
                 it = S.end();
                 it--;
-                if(it -> first > n - B) {
+                if(S.size() - it -> first - 1 < B) {
                     erase(it -> second);
                 } else break;
             }
-        } while(size >= 1);
+        } while(S.size() >= 1);
         
-        cout << size << "\n";
+        cout << S.size() << "\n";
         clear();
-        cin >> n >> m >> A >> B;
     }    
     return 0;
 }
