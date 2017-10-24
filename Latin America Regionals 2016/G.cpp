@@ -35,7 +35,7 @@ int main() {
         
         for(i = 1; i <= 26; i++)
             hNum[i] = myHash(i);
-      
+     
         fill(hStr, hStr + 28, 0);
         for(i = 0; i < n; i++){
             int x = s[i] - 'a' + 1;
@@ -46,7 +46,7 @@ int main() {
         ull B = 1;
         for(i = 0; i < n; i++)
             B *= b;
-       
+        
         fill(nxt[s.size()], nxt[s.size()] + 27, s.size());
 		for(i = s.size() - 1; i >= 0; i--){
             for(j = 1; j <= 26; j++)
@@ -62,6 +62,7 @@ int main() {
                         break;
           
             if(j > 26){
+<<<<<<< HEAD
 				ans++;
 				//cout << i << " ";
 			}
@@ -69,6 +70,16 @@ int main() {
             int x = s[i] - 'a' + 1;
             for(j = 1; j <= 26; j++)
                 hStr[j] += (x == j ? ULLONG_MAX - B : 0);
+=======
+                ans++;
+	    //cout << i << " ";
+	}
+	
+            //actualizar hashes
+            int x = s[i] - 'a' + 1;
+            for(j = 1; j <= 26; j++)
+                hStr[j] += (x == j ? ULLONG_MAX + 1 - B : 0);
+>>>>>>> 448c611aa4e74a52824a2df68fabd4d22a6a9dda
             
             x = s[i + n] - 'a' + 1;
             for(j = 1; j <= 26; j++)
@@ -77,19 +88,23 @@ int main() {
         
         for(j = 1; j <= 26; j++)
             if(nxt[i][j] < s.size())
-				if(hStr[j] != hNum[ A[nxt[i][j] - i] ])
-					break;
+	    if(hStr[j] != hNum[ A[nxt[i][j] - i] ])
+	        break;
 	
         if(j > 26){
             ans++;
+<<<<<<< HEAD
 			//cout << i;
 		}
 		//cout << "\n";
+=======
+	//cout << i;
+        }
+        //cout << "\n";
+>>>>>>> 448c611aa4e74a52824a2df68fabd4d22a6a9dda
         
         cout << ans << "\n";
-        
     }
     
     return 0;
 }
-
