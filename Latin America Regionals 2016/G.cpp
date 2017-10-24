@@ -48,7 +48,7 @@ int main() {
             B *= b;
        
         fill(nxt[s.size()], nxt[s.size()] + 27, s.size());
-        for(i = s.size() - 1; i >= 0; i--){
+		for(i = s.size() - 1; i >= 0; i--){
             for(j = 1; j <= 26; j++)
                 nxt[i][j] = (nxt[i + 1][j]);
             nxt[i][s[i] - 'a' + 1] = i;
@@ -62,13 +62,13 @@ int main() {
                         break;
           
             if(j > 26){
-                ans++;
-				cout << i << " ";
+				ans++;
+				//cout << i << " ";
 			}
             //actualizar hashes
             int x = s[i] - 'a' + 1;
             for(j = 1; j <= 26; j++)
-                hStr[j] -= (x == j ? B : 0);
+                hStr[j] += (x == j ? ULLONG_MAX - B : 0);
             
             x = s[i + n] - 'a' + 1;
             for(j = 1; j <= 26; j++)
@@ -82,9 +82,9 @@ int main() {
 	
         if(j > 26){
             ans++;
-			cout << i;
+			//cout << i;
 		}
-		cout << "\n";
+		//cout << "\n";
         
         cout << ans << "\n";
         
